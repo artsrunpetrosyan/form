@@ -1,24 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Form from './components/form/Form';
+import Card from './components/card/Card';
 import './App.css';
 
 function App() {
+  const [forms, setForms] = useState([]);
+  const [edit, setEdit] = useState([]);
+  const cretaeForms = (newForm) => {
+    if (newForm.id) {
+      setForms(forms.map(form =>
+        form.id === newForm.id ? newForm : form
+      ));
+      return;
+    }
+
+    newForm = {
+      ...newForm,
+      id: new Date().valueOf()
+    };
+    setForms([...forms, newForm]);
+
+  };
+
+  const deleteForm = (id) => {
+    setForms(forms.filter(form => form.id ? !form.id : null))
+  };
+
+  const editForm = (id) => {
+    const formEdit = forms.find(form => form.id === id)
+    setEdit(formEdit)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Form cretaeForms={cretaeForms} edit={edit} />
+      {forms.map(form => {
+        return <Card key={form.id} form={form} deleteForm={deleteForm} editForm={editForm} />
+      })}
+
     </div>
   );
 }

@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+.card{ 
+    margin: 30px 0 0 15px;
+    width: 600px;
+
+}
+
+.card div {
+    margin-top: 15px ;
+}
+.but {
+  margin-left: 50px;
+}
+.but button {
+    height: 40px;
+    width: 100px;
+    margin-right: 20px;
+    background:#007bff;
+    color:#fff;
+}
+.but button:hover {
+    background: #01438a;
+}
