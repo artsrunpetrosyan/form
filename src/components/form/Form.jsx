@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 function Form(props) {
     const [formValues, setFormValues] = useState(example);
     useEffect(() => {
-        setFormValues(props.edit) 
+        props.edit && setFormValues(props.edit) 
     }, [props.edit]);
 
     const handleOnChange = event => {
