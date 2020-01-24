@@ -5,7 +5,7 @@ import './App.css';
 
 function App() {
   const [forms, setForms] = useState([]);
-  const [edit, setEdit] = useState([]);
+  const [edit, setEdit] = useState(null);
   const cretaeForms = (newForm) => {
     if (newForm.id) {
       setForms(forms.map(form =>
